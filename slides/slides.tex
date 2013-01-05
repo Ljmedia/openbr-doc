@@ -93,7 +93,7 @@ Brendan's passionate speech on the need for open source biometrics software!
 
 \begin{frame}
 \frametitle{Software Architecture}
-\begin{columns}[ht]
+\begin{columns}
 \column{.48\textwidth}
   \graphicblock{Qt}{img/qt}{Cross-platform application and UI framework}
   \graphicblock{OpenCV}{img/opencv}{Image processing library}
@@ -105,6 +105,22 @@ Brendan's passionate speech on the need for open source biometrics software!
   \graphicblock{C API}{img/openbr}{High-level interface for other programming languages.}
   \graphicblock{C++ Plugin API}{img/openbr}{Core interface for using and developing algorithms.}
 \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Algorithm Evaluation}
+\begin{columns}
+  \column{0.33\textwidth}
+    \includegraphics[width=\textwidth]{img/MEDS/MEDS_ROC}
+  \column{0.33\textwidth}
+    \includegraphics[width=\textwidth]{img/MEDS/MEDS_SD}
+  \column{0.33\textwidth}
+    \includegraphics[width=\textwidth]{img/MEDS/MEDS_BC}
+\end{columns}
+\pause
+\begin{block}{Requires \emph{R} Software Environment}
+\textgreater \ install.packages(c("ggplot2", "gplots", "reshape", "scales"))
+\end{block}
 \end{frame}
 
 \begin{frame}
