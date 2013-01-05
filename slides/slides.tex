@@ -78,6 +78,31 @@ Brendan's passionate speech on the need for open source biometrics software!
 \end{itemize}
 \end{frame}
 
+\newcommand{\graphicblock}[3]
+{
+  \begin{block}{#1}
+    \begin{columns}
+      \column{0.1\textwidth}
+        \includegraphics[width=\textwidth]{#2}
+      \column{0.9\textwidth}
+        #3
+    \end{columns}
+  \end{block}
+}
+
+\begin{frame}
+\frametitle{Software Architecture}
+\begin{columns}
+\column{.5\textwidth}
+  \graphicblock{Qt}{img/qt}{Cross-platform application and UI framework}
+  \graphicblock{OpenCV}{img/opencv}{Image processing library}
+  \graphicblock{Eigen}{img/eigen}{Linear algebra library}
+  \graphicblock{CMake}{img/cmake}{Cross-platform build system}
+\column{.5\textwidth}
+  Software Abstractions
+\end{columns}
+\end{frame}
+
 \begin{frame}
 \frametitle{References}
 \footnotesize{
