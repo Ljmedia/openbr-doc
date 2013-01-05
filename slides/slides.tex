@@ -59,6 +59,7 @@ Brendan's passionate speech on the need for open source biometrics software!
   \item Gender Classification
   \item Age Estimation
   \item Document Classification
+  \item Commercial Wrappers
   \end{itemize}
 \pause
 \item Tools for algorithm evaluation
@@ -92,14 +93,17 @@ Brendan's passionate speech on the need for open source biometrics software!
 
 \begin{frame}
 \frametitle{Software Architecture}
-\begin{columns}
-\column{.5\textwidth}
+\begin{columns}[ht]
+\column{.48\textwidth}
   \graphicblock{Qt}{img/qt}{Cross-platform application and UI framework}
   \graphicblock{OpenCV}{img/opencv}{Image processing library}
   \graphicblock{Eigen}{img/eigen}{Linear algebra library}
   \graphicblock{CMake}{img/cmake}{Cross-platform build system}
-\column{.5\textwidth}
-  Software Abstractions
+\pause
+\column{.48\textwidth}
+  \graphicblock{br}{img/openbr}{Command line application for running algorithms and evaluating results.}
+  \graphicblock{C API}{img/openbr}{High-level interface for other programming languages.}
+  \graphicblock{C++ Plugin API}{img/openbr}{Core interface for using and developing algorithms.}
 \end{columns}
 \end{frame}
 
