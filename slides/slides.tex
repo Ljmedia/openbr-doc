@@ -4,7 +4,7 @@
 % Released at http://www.stattler.com
 % by Rifat Jahan
 
-\documentclass{beamer}
+\documentclass[12pt]{beamer}
 %\usecolortheme[named=green]{structure}
 \mode<presentation> {
 \usetheme{Madrid} % My favorite!
@@ -25,8 +25,8 @@
 
 \usepackage{graphicx}
 %\logo{\includegraphics[height=0.6cm]{../../openbr.png}}
-\title[OpenBR]{Open Source Biometric Recognition}
-\author{J. Klontz \& B. Klare \& M. Burge}
+\title[OpenBR]{OpenBR -- Open Source Biometric Recognition}
+\author[J. Klontz \& B. Klare \& M. Burge]{Josh Klontz \& Brendan Klare \& Mark Burge}
 \institute[]
 {
 www.openbiometrics.org \\
@@ -41,12 +41,41 @@ www.openbiometrics.org \\
 \titlepage
 \end{frame}
 
+\section{Introduction}
 \begin{frame}
 \frametitle{Motivation}
 \begin{block}
 {Why Open Source?}
 Brendan's passionate speech on the need for open source biometrics software!
 \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{What's in it?}
+\begin{itemize}
+\item Off-the-shelf algorithms
+  \begin{itemize}
+  \item Face Recognition
+  \item Gender Classification
+  \item Age Estimation
+  \item Document Classification
+  \end{itemize}
+\pause
+\item Tools for algorithm evaluation
+  \begin{itemize}
+  \item Standardized set of file formats
+  \item Automatic plot generation
+  \item Command line interface
+  \end{itemize}
+\pause
+\item Software framework for algorithm development
+  \begin{itemize}
+  \item Simple C++ plugin API for implementing new algorithms
+  \item Built-in support for common algorithm use cases
+  \item Automatic packaging and deployment
+  \item Source code hosted on GitHub!
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
