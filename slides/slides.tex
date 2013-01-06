@@ -52,30 +52,37 @@ Brendan's passionate speech on the need for open source biometrics software!
 
 \begin{frame}
 \frametitle{What's in it?}
-\begin{itemize}
-\item Off-the-shelf algorithms
-  \begin{itemize}
-  \item Face Recognition
-  \item Gender Classification
-  \item Age Estimation
-  \item Commercial Wrappers
-  \end{itemize}
+\begin{block}{Off-the-shelf algorithms}
+  \vspace{-6pt}
+  \begin{columns}
+  \column{0.48\textwidth}
+    \begin{itemize}
+    \item Face Recognition
+    \item Gender Classification
+    \end{itemize}
+  \column{0.48\textwidth}
+    \begin{itemize}
+    \item Age Estimation
+    \item Commercial Wrappers
+    \end{itemize}
+  \end{columns}
+\end{block}
 \pause
-\item Tools for algorithm evaluation
+\begin{block}{Tools for algorithm evaluation}
   \begin{itemize}
   \item Standardized set of file formats
   \item Automatic plot generation
   \item Command line interface supporting common use cases
   \end{itemize}
+\end{block}
 \pause
-\item Software framework for algorithm development
+\begin{block}{Software framework for algorithm development}
   \begin{itemize}
   \item C++ plugin API for implementing new algorithms
   \item Grammar for image processing
-  \item Automatic packaging and deployment
-  \item Source code hosted on GitHub!
+  \item Automatic testing, packaging, and deployment
   \end{itemize}
-\end{itemize}
+\end{block}
 \end{frame}
 
 \newcommand{\graphicblock}[3]
@@ -138,6 +145,7 @@ Brendan's passionate speech on the need for open source biometrics software!
 
 \begin{frame}
 \frametitle{Algorithm Evaluation}
+\begin{block}{Automatic plot generation}
 \begin{columns}
   \column{0.33\textwidth}
     \includegraphics[width=\textwidth]{img/MEDS/MEDS_ROC}
@@ -146,14 +154,15 @@ Brendan's passionate speech on the need for open source biometrics software!
   \column{0.33\textwidth}
     \includegraphics[width=\textwidth]{img/MEDS/MEDS_BC}
 \end{columns}
+\end{block}
 \pause
 \begin{block}{Requires \emph{R} Software Environment}
 \textgreater \ install.packages(c("ggplot2", "gplots", "reshape", "scales"))
 \end{block}
 \pause
-\begin{block}{}
+\begin{center}
 \emph{ggplot2} is amazing!
-\end{block}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
