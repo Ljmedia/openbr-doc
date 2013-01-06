@@ -275,14 +275,29 @@ Transform *fr = Transform::make("FaceDetection+FaceRegistration+
 \end{frame}
 
 \begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99}
- \bibitem[Label1, 2010]{key1} Author's name (1987)
- \newblock Title of the paper.
- \newblock \emph{Journal Name} 55(4), 765 -- 799.
-\end{thebibliography}
-}
+\frametitle{Developer's Wish List}
+\begin{block}{What we want}
+  \begin{itemize}
+  \item Write once, run everywhere
+  \item Automatically utilize all available hardware
+  \item Run faster on future hardware
+  \end{itemize}
+\end{block}
+\pause
+\begin{block}{What we need}
+  \begin{itemize}
+  \item VM or JIT compiler
+  \item Express computations using induction variables (a.k.a. "kernels")
+  \end{itemize}
+\end{block}
+\pause
+\begin{block}{What we're proposing}
+  \begin{itemize}
+  \item LLVM JIT compiler
+  \item Anticipating OpenCL 2.0 standard
+  \item C++ API for kernel construction
+  \end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}
