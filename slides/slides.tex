@@ -153,6 +153,65 @@ Brendan's passionate speech on the need for open source biometrics software!
 \end{block}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Plugin Example: Local Binary Patterns}
+{\footnotesize
+\pause
+\begin{verbatim}
+#include <openbr_plugin.h>
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+class LBP : public Transform {
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+  BR_PROPERTY(int, radius, 1)
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+  void project(const Matrix &src, Matrix &dst) const {
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+    for (int r=radius; r<src.rows-radius; r++)
+      for (int c=radius; c<src.cols-radius; c++) {
+        float cval = p[(r+0*radius)*src.cols+c+0*radius];
+        dst(r, c) =
+          (p[(r-radius)*src.cols+c-radius] >= cval ? 128 : 0) |
+          (p[(r-radius)*src.cols+c] >= cval ? 64 : 0) |
+          ...;
+      }
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+  }
+};
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+BR_REGISTER(Transform, LBP)
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+...
+Transform *lbp = Transform::make("LBP(3)");
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+Transform *lbpu2 = Transform::make("LBP(3)+U2");
+\end{verbatim}
+}
+\end{frame}
+
 \begin{frame}
 \frametitle{Welcome to the Parallel Jungle!}
 \begin{figure}
