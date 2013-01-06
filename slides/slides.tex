@@ -58,7 +58,6 @@ Brendan's passionate speech on the need for open source biometrics software!
   \item Face Recognition
   \item Gender Classification
   \item Age Estimation
-  \item Document Classification
   \item Commercial Wrappers
   \end{itemize}
 \pause
@@ -66,13 +65,13 @@ Brendan's passionate speech on the need for open source biometrics software!
   \begin{itemize}
   \item Standardized set of file formats
   \item Automatic plot generation
-  \item Command line interface
+  \item Command line interface supporting common use cases
   \end{itemize}
 \pause
 \item Software framework for algorithm development
   \begin{itemize}
-  \item Simple C++ plugin API for implementing new algorithms
-  \item Built-in support for common algorithm use cases
+  \item C++ plugin API for implementing new algorithms
+  \item Grammar for image processing
   \item Automatic packaging and deployment
   \item Source code hosted on GitHub!
   \end{itemize}
@@ -208,6 +207,12 @@ Transform *lbp = Transform::make("LBP(3)");
 \pause
 \begin{verbatim}
 Transform *lbpu2 = Transform::make("LBP(3)+U2");
+\end{verbatim}
+\vspace{-24pt}
+\pause
+\begin{verbatim}
+Transform *fr = Transform::make("FaceDetection+FaceRegistration+
+                                 LBP(3)+U2+RSLDA");
 \end{verbatim}
 }
 \end{frame}
