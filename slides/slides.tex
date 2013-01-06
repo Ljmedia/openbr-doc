@@ -214,18 +214,18 @@ BR_REGISTER(Transform, LBP)
 \pause
 \begin{verbatim}
 ...
-Transform *lbp = Transform::make("LBP(3)");
+Transform *lbp = Transform::make("LBP(1)");
 \end{verbatim}
 \vspace{-24pt}
 \pause
 \begin{verbatim}
-Transform *lbpu2 = Transform::make("LBP(3)+U2");
+Transform *lbpu2 = Transform::make("LBP(1)+U2");
 \end{verbatim}
 \vspace{-24pt}
 \pause
 \begin{verbatim}
 Transform *fr = Transform::make("FaceDetection+FaceRegistration+
-                                 LBP(3)+U2+RSLDA");
+                                 LBP(1)+U2+RSLDA");
 \end{verbatim}
 }
 \end{frame}
@@ -306,6 +306,26 @@ Transform *fr = Transform::make("FaceDetection+FaceRegistration+
   \item Anticipating OpenCL 2.0 standard
   \item C++ API for kernel construction
   \end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The Dream}
+\begin{block}{When we say...}
+\begin{verbatim}
+Transform *lbpu2 = Transform::make("LBP(1)+U2");
+\end{verbatim}
+\end{block}
+\pause
+\begin{block}{...we mean}
+Give me a pointer to a function that computes $LBP_{u2}^{1}$ on an image,
+minimizes main memory transactions,
+and is optimized for parallel execution on the available hardware.
+\end{block}
+\pause
+\begin{block}{Take-Home Message}
+For image processing applications:\\
+$Compilation = Source + Hardware + Example\ Image$
 \end{block}
 \end{frame}
 
