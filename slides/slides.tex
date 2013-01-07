@@ -145,7 +145,7 @@ Brendan's passionate speech on the need for open source biometrics software!
 
 \begin{frame}
 \frametitle{Algorithm Evaluation}
-\begin{block}{Automatic plot generation}
+\begin{figure}
 \begin{columns}
   \column{0.33\textwidth}
     \includegraphics[width=\textwidth]{img/MEDS/MEDS_ROC}
@@ -154,7 +154,9 @@ Brendan's passionate speech on the need for open source biometrics software!
   \column{0.33\textwidth}
     \includegraphics[width=\textwidth]{img/MEDS/MEDS_BC}
 \end{columns}
-\end{block}
+\caption{Automatic plot generation of OpenBR vs COTS face recognition on NIST \emph{MEDS} mugshot database.}
+\end{figure}
+\vspace{-18pt}
 \pause
 \begin{block}{Requires \emph{R} Software Environment}
 \textgreater \ install.packages(c("ggplot2", "gplots", "reshape", "scales"))
@@ -239,7 +241,7 @@ Transform *fr = Transform::make("FaceDetection+FaceRegistration+
 \end{frame}
 
 \begin{frame}
-\frametitle{Economics}
+\frametitle{The Economics}
 \begin{columns}
 \column{0.48\textwidth}
 \begin{figure}
@@ -271,7 +273,7 @@ Transform *fr = Transform::make("FaceDetection+FaceRegistration+
 \textbf{1665 GFLOPS}
 \end{columns}
 \pause
-\begin{block}{Gotcha: Memory Bandwidth}
+\begin{alertblock}{Gotcha: Memory Bandwidth}
 \begin{columns}
 \column{0.48\textwidth}
 \centering
@@ -280,14 +282,14 @@ Transform *fr = Transform::make("FaceDetection+FaceRegistration+
 \centering
 \textbf{48.0 GFLOPS}
 \end{columns}
-\end{block}
+\end{alertblock}
 \end{frame}
 
 \begin{frame}
-\frametitle{Developer's Wish List}
+\frametitle{The Wish List}
 \begin{block}{What we want}
   \begin{itemize}
-  \item Write once, run everywhere
+  \item Write once and run everywhere
   \item Automatically utilize all available hardware
   \item Run faster on future hardware
   \end{itemize}
@@ -295,15 +297,15 @@ Transform *fr = Transform::make("FaceDetection+FaceRegistration+
 \pause
 \begin{block}{What we need}
   \begin{itemize}
-  \item VM or JIT compiler
+  \item Virtual machine or just-in-time compiler
   \item Express computations using induction variables (a.k.a. "kernels")
   \end{itemize}
 \end{block}
 \pause
 \begin{block}{What we're proposing}
   \begin{itemize}
-  \item LLVM JIT compiler
-  \item Anticipating OpenCL 2.0 standard
+  \item LLVM IR and JIT compiler
+  \item Designing for OpenCL 2.0 standard
   \item C++ API for kernel construction
   \end{itemize}
 \end{block}
@@ -311,6 +313,9 @@ Transform *fr = Transform::make("FaceDetection+FaceRegistration+
 
 \begin{frame}[fragile]
 \frametitle{The Dream}
+\begin{exampleblock}{Perfectly Composable Image Processing Primitives}
+A grammar for building algorithms from orthogonal primitive kernels with typeless semantics and optimized execution.
+\end{exampleblock}
 \begin{block}{When we say...}
 \begin{verbatim}
 Transform *lbpu2 = Transform::make("LBP(1)+U2");
@@ -318,19 +323,22 @@ Transform *lbpu2 = Transform::make("LBP(1)+U2");
 \end{block}
 \pause
 \begin{block}{...we mean}
-Give me a pointer to a function that computes $LBP_{u2}^{1}$ on an image,
-minimizes main memory transactions,
-and is optimized for parallel execution on the available hardware.
+Give me a pointer to a function that computes $LBP_{8,1}^{u2}$ on an image,
+minimizes main memory transactions by combining kernels,
+and is optimized for parallel execution on the hardware available.
 \end{block}
 \pause
-\begin{block}{Take-Home Message}
-For image processing applications:\\
-$Compilation = Source + Hardware + Example\ Image$
-\end{block}
+\begin{exampleblock}{Take-Home Message}
+$Compilation = Source\ Code + Available\ Hardware + First\ Image$
+\end{exampleblock}
 \end{frame}
 
 \begin{frame}
-\centerline{The End}
+\frametitle{The End}
+\begin{block}{}
+\centering
+\textbf{www.openbiometrics.org}
+\end{block}
 \end{frame}
 
 
