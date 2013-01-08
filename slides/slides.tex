@@ -227,13 +227,35 @@ Transform *lbp = Transform::make("LBP(1)");
 \begin{verbatim}
 Transform *lbpu2 = Transform::make("LBP(1)+U2");
 \end{verbatim}
-\vspace{-24pt}
-\pause
-\begin{verbatim}
-Transform *fr = Transform::make("FaceDetection+FaceRegistration+
-                                 LBP(1)+U2+RSLDA");
-\end{verbatim}
 }
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Algorithm Example: Face Recognition}
+\begin{exampleblock}{}
+\begin{verbatim}
+$ br -algorithm FaceRecognition -compare me.jpg you.jpg
+\end{verbatim}
+\end{exampleblock}
+\pause
+\begin{block}{FaceRecognition}
+FaceDetection!\textless FaceRegistration\textgreater !\textless FaceExtraction\textgreater + \textless FaceEmbedding\textgreater +\textless FaceQuantization\textgreater :UCharL1
+\end{block}
+\pause
+\begin{block}{FaceDetection}
+Open+Cvt(Gray)+Cascade(FrontalFace)
+\end{block}
+\pause
+\begin{block}{FaceRegistration}
+ASEFEyes+Affine(88,88,0.25,0.35)+FTE(DFFS)
+\end{block}
+\pause
+\vspace{-9pt}
+...
+\vspace{-3pt}
+\begin{block}{FaceEmbedding}
+Dup(12)+RndSubspace(0.05,1)+LDA(0.98)+Cat+PCA(768)
+\end{block}
 \end{frame}
 
 \begin{frame}
