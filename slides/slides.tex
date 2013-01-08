@@ -154,17 +154,21 @@ Brendan's passionate speech on the need for open source biometrics software!
   \column{0.33\textwidth}
     \includegraphics[width=\textwidth]{img/MEDS/MEDS_BC}
 \end{columns}
-\caption{Automatic plot generation of OpenBR vs COTS face recognition on NIST \emph{MEDS} mugshot database.}
+\caption{OpenBR vs COTS face recognition on \emph{MEDS} mugshot database.}
 \end{figure}
-\vspace{-18pt}
+\vspace{-20pt}
 \pause
-\begin{block}{Requires \emph{R} Software Environment}
-\textgreater \ install.packages(c("ggplot2", "gplots", "reshape", "scales"))
-\end{block}
-\pause
-\begin{center}
-\emph{ggplot2} is amazing!
-\end{center}
+{\footnotesize
+\hskip-10pt
+\begin{tabular}{l | c | c | c | c | c}
+ & \textbf{OpenBR} & \textbf{COTS-A} & \textbf{COTS-B} & \textbf{COTS-C} & \textbf{COTS-D} \\
+\hline
+\textbf{TAR @ FAR = 0.01} & 0.77 & 0.93 & \underline{0.96} & 0.86 & 0.80 \\
+\textbf{Template Size (kB)} & \underline{0.75} & 2.8 & 5.0 & 36 & 74 \\
+\textbf{Enrollment Speed} & \underline{10} & N/A & N/A & 1.3 & 1.2 \\
+\textbf{Comparison Speed} & \underline{3,800,000} & N/A & 110,000 & 19,000 & 2,000 \\
+ \end{tabular}
+}
 \end{frame}
 
 \begin{frame}[fragile]
