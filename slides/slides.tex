@@ -183,39 +183,6 @@ Help foster a community where collaboration can take place at the source code le
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Plugin Example: Local Binary Patterns}
-{\footnotesize
-\pause
-\#include  \textless openbr\_plugin.h\textgreater \\
-\pause
-class LBP : public Transform \{ \\
-\pause
-\ \ BR\_PROPERTY(int, radius, 1) \\
-\pause
-\ \ void project(const Matrix \&src, Matrix \&dst) const \{ \\
-\pause
-\ \ \ \ for (int r=radius; r\textless src.rows-radius; r++) \\
-\ \ \ \ \ \ for (int c=radius; c\textless src.cols-radius; c++) \{ \\
-\ \ \ \ \ \ \ \ float cval = p[r*src.cols+c]; \\
-\ \ \ \ \ \ \ \ dst(r, c) = \\
-\ \ \ \ \ \ \ \ \ \ (p[(r-radius)*src.cols+c-radius] \textgreater = cval ? 128 : 0) \textbar \\
-\ \ \ \ \ \ \ \ \ \ (p[(r-radius)*src.cols+c] \textgreater = cval ? 64 : 0) \textbar \\
-\ \ \ \ \ \ \ \ \ \ ...; \\
- \ \ \ \ \ \ \} \\
-\pause
-\ \ \} \\
-\}; \\
-\pause
-BR\_REGISTER(Transform, LBP) \\
-\pause
-... \\
-Transform *lbp = Transform::make("LBP(1)"); \\
-\pause
-Transform *lbpu2 = Transform::make("LBP(1)+U2"); \\
-}
-\end{frame}
-
-\begin{frame}[fragile]
 \frametitle{Algorithm Example: Face Recognition}
 \pause
 \begin{exampleblock}{}
@@ -381,6 +348,38 @@ Thank You!
 \end{center}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Plugin Example: Local Binary Patterns}
+{\footnotesize
+\pause
+\#include  \textless openbr\_plugin.h\textgreater \\
+\pause
+class LBP : public Transform \{ \\
+\pause
+\ \ BR\_PROPERTY(int, radius, 1) \\
+\pause
+\ \ void project(const Matrix \&src, Matrix \&dst) const \{ \\
+\pause
+\ \ \ \ for (int r=radius; r\textless src.rows-radius; r++) \\
+\ \ \ \ \ \ for (int c=radius; c\textless src.cols-radius; c++) \{ \\
+\ \ \ \ \ \ \ \ float cval = p[r*src.cols+c]; \\
+\ \ \ \ \ \ \ \ dst(r, c) = \\
+\ \ \ \ \ \ \ \ \ \ (p[(r-radius)*src.cols+c-radius] \textgreater = cval ? 128 : 0) \textbar \\
+\ \ \ \ \ \ \ \ \ \ (p[(r-radius)*src.cols+c] \textgreater = cval ? 64 : 0) \textbar \\
+\ \ \ \ \ \ \ \ \ \ ...; \\
+ \ \ \ \ \ \ \} \\
+\pause
+\ \ \} \\
+\}; \\
+\pause
+BR\_REGISTER(Transform, LBP) \\
+\pause
+... \\
+Transform *lbp = Transform::make("LBP(1)"); \\
+\pause
+Transform *lbpu2 = Transform::make("LBP(1)+U2"); \\
+}
+\end{frame}
 
 % End of slides
 \end{document} 
