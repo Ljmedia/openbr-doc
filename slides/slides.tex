@@ -54,7 +54,7 @@ Provide a well-engineered framework for deploying algorithms.
 \end{block}
 \pause
 \begin{block}{Reduce Duplication}
-Provide state-of-the-art baseline algorithms for various biometric modalities.
+Provide state-of-the-art baseline algorithms for various modalities.
 \end{block}
 \pause
 \begin{block}{Improve Collaboration}
@@ -84,7 +84,7 @@ Help foster a community where collaboration can take place at the source code le
   \begin{itemize}
   \item Standardized set of file formats
   \item Automatic plot generation
-  \item Command line interface supporting common use cases
+  \item Command line interface supporting common biometrics tasks
   \end{itemize}
 \end{block}
 \pause
@@ -187,63 +187,38 @@ Help foster a community where collaboration can take place at the source code le
 \frametitle{Plugin Example: Local Binary Patterns}
 {\footnotesize
 \pause
-\begin{verbatim}
-#include <openbr_plugin.h>
-\end{verbatim}
-\vspace{-24pt}
+\#include  \textless openbr\_plugin.h\textgreater \\
 \pause
-\begin{verbatim}
-class LBP : public Transform {
-\end{verbatim}
-\vspace{-24pt}
+class LBP : public Transform \{ \\
 \pause
-\begin{verbatim}
-  BR_PROPERTY(int, radius, 1)
-\end{verbatim}
-\vspace{-24pt}
+\ \ BR\_PROPERTY(int, radius, 1) \\
 \pause
-\begin{verbatim}
-  void project(const Matrix &src, Matrix &dst) const {
-\end{verbatim}
-\vspace{-24pt}
+\ \ void project(const Matrix \&src, Matrix \&dst) const \{ \\
 \pause
-\begin{verbatim}
-    for (int r=radius; r<src.rows-radius; r++)
-      for (int c=radius; c<src.cols-radius; c++) {
-        float cval = p[(r+0*radius)*src.cols+c+0*radius];
-        dst(r, c) =
-          (p[(r-radius)*src.cols+c-radius] >= cval ? 128 : 0) |
-          (p[(r-radius)*src.cols+c] >= cval ? 64 : 0) |
-          ...;
-      }
-\end{verbatim}
-\vspace{-24pt}
+\ \ \ \ for (int r=radius; r\textless src.rows-radius; r++) \\
+\ \ \ \ \ \ for (int c=radius; c\textless src.cols-radius; c++) \{ \\
+\ \ \ \ \ \ \ \ float cval = p[r*src.cols+c]; \\
+\ \ \ \ \ \ \ \ dst(r, c) = \\
+\ \ \ \ \ \ \ \ \ \ (p[(r-radius)*src.cols+c-radius] \textgreater = cval ? 128 : 0) \textbar \\
+\ \ \ \ \ \ \ \ \ \ (p[(r-radius)*src.cols+c] \textgreater = cval ? 64 : 0) \textbar \\
+\ \ \ \ \ \ \ \ \ \ ...; \\
+ \ \ \ \ \ \ \} \\
 \pause
-\begin{verbatim}
-  }
-};
-\end{verbatim}
-\vspace{-24pt}
+\ \ \} \\
+\}; \\
 \pause
-\begin{verbatim}
-BR_REGISTER(Transform, LBP)
-\end{verbatim}
-\vspace{-24pt}
+BR\_REGISTER(Transform, LBP) \\
 \pause
-\begin{verbatim}
-...
-Transform *lbp = Transform::make("LBP(1)");
-\end{verbatim}
-\vspace{-24pt}
+... \\
+Transform *lbp = Transform::make("LBP(1)"); \\
 \pause
-\begin{verbatim}
-Transform *lbpu2 = Transform::make("LBP(1)+U2");
-\end{verbatim}
+Transform *lbpu2 = Transform::make("LBP(1)+U2"); \\
 }
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Algorithm Example: Face Recognition}
+\pause
 \begin{exampleblock}{}
 \begin{verbatim}
 $ br -algorithm FaceRecognition -compare me.jpg you.jpg
