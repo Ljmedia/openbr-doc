@@ -1,37 +1,17 @@
-% A Readymade beamer presentation template
-% Version 1.1
-% Relase date: May 2, 2010
-% Released at http://www.stattler.com
-% by Rifat Jahan
-
 \documentclass[12pt]{beamer}
-%\usecolortheme[named=green]{structure}
 \mode<presentation> {
-\usetheme{Madrid} % My favorite!
-%\usetheme{Boadilla} % Pretty neat, soft color.
-%\usetheme{default}
-%\usetheme{Warsaw}
-%\usetheme{Bergen} % This template has nagivation on the left
-%\usetheme{Frankfurt} % Similar to the default with an extra region at the top.
-%\usecolortheme{seahorse} % Simple and clean template
-%\usetheme{Darmstadt} % not so good
-% Uncomment the following line if you want page numbers and using Warsaw theme
-% \setbeamertemplate{footline}[page number]
-%\setbeamercovered{transparent}
-\setbeamercovered{invisible}
-% To remove the navigation symbols from the bottom of slides%
-\setbeamertemplate{navigation symbols}{}
+  \usetheme{Madrid}
+  \setbeamercovered{invisible}
+  \setbeamertemplate{navigation symbols}{}
 }
 
 \usepackage{graphicx}
-%\logo{\includegraphics[height=0.6cm]{../../openbr}}
+\usepackage[font={scriptsize}]{caption}
+
 \title[OpenBR]{OpenBR -- Open Source Biometric Recognition}
+\subtitle{and Beyond}
 \author[J. Klontz]{Josh Klontz}
-\institute[]
-{
-\small
-\emph{www.openbiometrics.org}
-}
+\institute[] { \small \emph{www.openbiometrics.org} }
 \date{\today}
 
 \begin{document}
@@ -48,16 +28,16 @@
 Support a common set of file formats and tools for algorithm design, development, and evaluation.
 \end{block}
 \pause
-\begin{block}{Reduced Time to Market}
-Provide a well-engineered framework for deploying algorithms.
+\begin{block}{Decrease Time to Market}
+Provide a well-engineered and consistent framework for deploying new algorithms.
 \end{block}
 \pause
 \begin{block}{Reduce Duplication}
-Provide state-of-the-art baseline algorithms for various modalities.
+Supply state-of-the-art baseline components for algorithm design.
 \end{block}
 \pause
 \begin{block}{Improve Collaboration}
-Help foster a community where collaboration can take place at the source code level.
+Help foster a community where collaboration takes place at the source code level.
 \end{block}
 \end{frame}
 
@@ -182,9 +162,19 @@ Help foster a community where collaboration can take place at the source code le
 }
 \end{frame}
 
+\begin{frame}
+\frametitle{FRVT 2012 (OpenBR = 'K')}
+\centering
+\includegraphics[height=0.85\textheight]{img/frvt2012a}
+\end{frame}
+
+\begin{frame}
+\frametitle{FRVT 2012 (OpenBR = 'K')}
+\includegraphics[width=\textwidth]{img/frvt2012b}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Algorithm Example: Face Recognition}
-\pause
 \begin{exampleblock}{}
 \begin{verbatim}
 $ br -algorithm FaceRecognition -compare me.jpg you.jpg
@@ -213,11 +203,10 @@ Dup(12)+RndSubspace(0.05,1)+LDA(0.98)+Cat+PCA(768)
 
 \begin{frame}
 \frametitle{Live Coding}
+\pause
 \includegraphics[width=\textwidth]{img/livecoding1}
 \vspace{12pt}
-\pause
 \includegraphics[width=\textwidth]{img/livecoding2}
-\pause
 \begin{block}{Inventing on Principle}
 http://www.youtube.com/watch?v=PUv66718DII
 \end{block}
@@ -226,16 +215,8 @@ http://www.youtube.com/watch?v=PUv66718DII
 \begin{frame}
 \frametitle{CPU Scaling}
 \begin{figure}
-\includegraphics[height=0.7\textheight]{img/cpuscaling}
+\includegraphics[height=0.75\textheight]{img/cpuscaling}
 \caption{http://www.extremetech.com/computing/116561-the-death-of-cpu-scaling-from-one-core-to-many-and-why-were-still-stuck}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Welcome to the Parallel Jungle!}
-\begin{figure}
-\includegraphics[width=\textwidth]{img/sutter}
-\caption{http://www.drdobbs.com/parallel/welcome-to-the-parallel-jungle/232400273}
 \end{figure}
 \end{frame}
 
@@ -248,7 +229,8 @@ http://www.youtube.com/watch?v=PUv66718DII
 \end{frame}
 
 \begin{frame}
-\frametitle{The Economics}
+\frametitle{Hardware Realities}
+\vspace{-12pt}
 \begin{columns}
 \column{0.33\textwidth}
 \begin{figure}
@@ -261,8 +243,10 @@ http://www.youtube.com/watch?v=PUv66718DII
 \caption{GTX 680}
 \end{figure}
 \column{0.33\textwidth}
+\vspace{9pt}
 \begin{figure}
 \includegraphics[width=\textwidth]{img/phi5110p}
+\vspace{9pt}
 \caption{Xeon Phi 5110p}
 \end{figure}
 \end{columns}
@@ -304,10 +288,14 @@ http://www.youtube.com/watch?v=PUv66718DII
 \textbf{80 GFLOPS}
 \end{columns}
 \end{alertblock}
+\pause
+\begin{alertblock}{Gotcha: Code Duplication}
+Need a separate code base for optimized performance on each device!
+\end{alertblock}
 \end{frame}
 
 \begin{frame}
-\frametitle{The Wish List}
+\frametitle{Requirements}
 \begin{block}{What we want}
   \begin{itemize}
   \item Write once and run everywhere
@@ -319,7 +307,8 @@ http://www.youtube.com/watch?v=PUv66718DII
 \begin{block}{What we need}
   \begin{itemize}
   \item Virtual machine or just-in-time compiler
-  \item Express computations using induction variables (a.k.a. "kernels")
+  \item Express computations using induction variables or ``kernels'': \\
+           \center{\emph{void example\_kernel(int *a, int *b, int i) \{ a[i] += b[i]; \}}}
   \end{itemize}
 \end{block}
 \pause
@@ -327,16 +316,15 @@ http://www.youtube.com/watch?v=PUv66718DII
   \begin{itemize}
   \item LLVM IR and JIT compiler
   \item Designing for OpenCL 2.0 standard
-  \item C++ API for kernel construction
   \end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{The Dream}
-\begin{exampleblock}{Perfectly Composable Image Processing Primitives}
+\frametitle{Goals}
+\begin{block}{Perfectly Composable Image Processing Primitives}
 A grammar for building algorithms from orthogonal primitive kernels with typeless semantics and optimized execution.
-\end{exampleblock}
+\end{block}
 \pause
 \begin{block}{When we say...}
 \begin{verbatim}
@@ -357,25 +345,29 @@ $Compilation = Source\ Code + Available\ Hardware + First\ Image$
 
 \begin{frame}
 \frametitle{The End}
-\begin{block}{Website}
+\begin{block}{Slides}
 \centering
-www.openbiometrics.org
+openbiometerics.org/slides.pdf
 \end{block}
 \begin{block}{Source}
 \centering
-https://github.com/biometrics/openbr
+github.com/biometrics/openbr
 \end{block}
 \begin{block}{E-mail}
 \centering
 openbr-dev@googlegroups.com
 \end{block}
-\begin{block}{Slides}
-\centering
-www.openbiometerics.org/slides.pdf
-\end{block}
 \begin{center}
 Thank You!
 \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Welcome to the Parallel Jungle!}
+\begin{figure}
+\includegraphics[width=\textwidth]{img/sutter}
+\caption{http://www.drdobbs.com/parallel/welcome-to-the-parallel-jungle/232400273}
+\end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
